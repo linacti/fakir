@@ -1,0 +1,11 @@
+Django
+dateutils
+jupyter
+django-extensions
+Pillow
+gunicorn
+pep8
+flake8
+pylint
+autopep8
+psycopg2
