@@ -1,0 +1,2 @@
+# fakir
+Faktury i rozrachunki
