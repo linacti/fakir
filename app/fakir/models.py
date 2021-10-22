@@ -1,6 +1,6 @@
 from django.db import models
 
-class Firma(models.Model):
+class Sprzedawca(models.Model):
     nazwa_firmy = models.CharField(max_length=100)
     adres_firmy = models.CharField(max_lenght=100)
     podatek = models.CharField(max_length=20)
