@@ -2,15 +2,25 @@ from django.db import models
 from django.db.models.fields import DecimalField
 
 class Sprzedawca(models.Model):
-    nazwa_firmy = models.CharField(max_length=100)
-    adres_firmy = models.CharField(max_lenght=100)
-    podatek = models.CharField(max_length=20)
-    data_zalozenia = models.DateField('Data założenia')
-    Telefon_firmy = models.TextField()
-    NIP = models..TextField() 
     
- 
-   
+    Sprzedawca_nazwa = models.CharField(max_length=100)
+    
+    Sprzedawca_adres = models.CharField(max_lenght=100)
+    
+    Sprzedawca_podatek = models.CharField(max_length=20)
+    
+    Sprzedawca_data_zalozenia = models.DateField('Data założenia')
+    
+    Sprzedawca_telefon = models.TextField()
+    
+    Sprzedawca_NIP = models..TextField() 
+    
+    Sprzedawca_wlasciciel = models.TextField()
+    
+    class Meta:
+        verbose_name = "Firma"
+        
+        verbose_name_plural = "Sprzedawcy"
     def __str__(self):
         return self.nazwa
         
