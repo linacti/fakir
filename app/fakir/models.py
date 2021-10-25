@@ -1,6 +1,19 @@
 from django.db import models
 from django.db.models.fields import DecimalField
 
+class Klient(models.Model):
+    Imie = models.CharField(max_length=100)
+    Nazwisko = models.CharField(max_length=100)
+    nr_pesel = models.TextField(max_length=11)
+    Adres = models.CharField(max_lenght=150)
+    kod_pocztowy = models.TextField(max_length=6)
+    miasto = models.CharField(max_length=50)
+    data_urodzenia = models.DateField()
+    nr_telefonu = models.TextField(max_length=9)
+    
+    def __str__(self):
+        return self.nazwa
+
 class Sprzedawca(models.Model):
     
     Sprzedawca_nazwa = models.CharField(max_length=100)
