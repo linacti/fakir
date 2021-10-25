@@ -26,7 +26,7 @@ class Sprzedawca(models.Model):
     
     Sprzedawca_telefon = models.TextField()
     
-    Sprzedawca_NIP = models..TextField() 
+    Sprzedawca_NIP = models.TextField() 
     
     Sprzedawca_wlasciciel = models.TextField()
     
