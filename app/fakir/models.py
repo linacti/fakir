@@ -40,34 +40,23 @@ class Sprzedawca(models.Model):
 class Faktura(models.Model):
 
     class Meta:
-       verbose_name = "Faktura"
-       verbose_name_plural = "Faktury"
+        verbose_name = "Faktura"
+        verbose_name_plural = "Faktury"
 
-    numerfaktury = models.CharField(max_length=200, null=True, blank=True,)
+    numer = models.CharField(max_length=200, null=True, blank=True,)
 
-    kupujacy = models.ForeignKey(Firma, on_delete=models.SET_NULL, null=True, blank=True, related_name="nabywcy_set")
-    
-    kupujacy_adres = models.TextField(null=True, blank=True)
-    
-    kupujacy_podatekid = models.CharField(max_length=20, null=True, blank=True)
+    nabywca = models.ForeignKey(Firma, on_delete=models.SET_NULL, null=True, blank=True, related_name="nabywcy_set")
+    nabywca_taxid = models.CharField(max_length=20, null=True, blank=True)
+    nabywca_adres = models.TextField(null=True, blank=True)
 
-    wlasciciel = models.ForeignKey(Firma, on_delete=models.SET_NULL, null=True, blank=True, related_name="sprzedawcy_set")
-    
-    wlasciciel_adres = models.TextField(null=True, blank=True)
-    wlasciciel_podatekid = models.CharField(max_length=20, null=True, blank=True)
 
-    numeracja = models.ForeignKey(NumeracjaFaktur, on_delete=models.SET_NULL, null=True, blank=True)
-    
-    data_sprzedazy = models.DateField('Data sprzedaży')
-    
-    data_wystawienia = models.DateField('Data wystawienia')
-    
-    is_oplacona = models.BooleanField(default=False)
-    
-    is_kosztowa = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.numer
+    sprzedawca = models.ForeignKey(Firma, on_delete=models.SET_NULL, null=True, blank=True, related_name="sprzedawcy_set")
+     sprzedawca_taxid = models.CharField(max_length=20, null=True, blank=True)
+    sprzedawca_adres = models.TextField(null=True, blank=True)
+  
+  
+      def __str__(self):
+      	return self.numer
                 
         
 class JednostkaMiary(models.Model):
