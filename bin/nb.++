@@ -1,0 +1,4 @@
+#!/bin/bash
+if cd ++PRJDIR++/nbooks; then
+../manage.py shell_plus --notebook
+fi

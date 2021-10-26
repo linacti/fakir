@@ -1,6 +1,18 @@
 # fakir
 Faktury i rozrachunki
-Sprawdzam czy dziala
-kamil sprawdza
-dawid check
-Tomasz sprawdza 
+
+
+
+# Instalacja środowiska
+
+Po sklonowaniu repo do katalogu XXX mamy taką strukturę:
+
+
+* Utwórz  own version of `Makefile` by simply copying contents of `Makefile.sample`
+
+* edit it
+
+* run `make`
+
+
+
