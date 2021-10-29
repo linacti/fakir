@@ -53,6 +53,11 @@ class Faktura(models.Model):
     sprzedawca = models.ForeignKey(Firma, on_delete=models.SET_NULL, null=True, blank=True, related_name="sprzedawcy_set")
      sprzedawca_taxid = models.CharField(max_length=20, null=True, blank=True)
     sprzedawca_adres = models.TextField(null=True, blank=True)
+    
+    data_sprzedazy = models.DateField('Data sprzedaży')
+    data_wystawienia = models.DateField('Data wystawienia')
+    is_oplacona = models.BooleanField(default=False)
+    is_kosztowa = models.BooleanField(default=False)
   
   
       def __str__(self):
