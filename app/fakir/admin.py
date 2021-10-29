@@ -1,19 +1,16 @@
 from django.contrib import admin
-from .models import Klient, Sprzedawca, Faktura, PozycjaFaktury, 
+from fakir.models import Sprzedawca, Faktura, PozycjaFaktury
 
-class KlientAdmin(admin.ModelAdmin):
-list_display = ('Imie', 'Nazwisko', 'nr_pesel', 'Adres', 'kod_pocztowy', 'miasto', 'data_urodzenia', 'nr_telefonu' )
-list_filter = ['data_urodzenia']
+
 
 class PozycjeInline(admin.TabularInline):
     model = PozycjaFaktury
     extra = 3
+    
+ 
 
 class FakturaAdmin(admin.ModelAdmin):
-   
-    
     fieldsets = [
-        (None, {'fields': ['numeracja']}),
         ('Daty', {'fields': ['data_sprzedazy', 'data_wystawienia'], 'classes': ['collapse', 'open']}),
         (None,  {'fields': ['nabywca']}),
         ('Dane nabywcy', {'fields': ['nabywca_adres', 'nabywca_taxid'], 'classes': ['collapse', 'open']}),
@@ -24,7 +21,7 @@ class FakturaAdmin(admin.ModelAdmin):
     list_display = ('numer', 'nabywca', 'sprzedawca', 'data_wystawienia')
     list_filter = ['data_wystawienia']
     inlines = [PozycjeInline]
-    autocomplete_fields = ["nabywca", "sprzedawca", "numeracja"]
+    autocomplete_fields = ["nabywca", "sprzedawca"]
 
     def get_fields(self, request, obj=None):
         if not obj:
@@ -38,7 +35,7 @@ class SprzedawcaAdmin(admin.ModelAdmin):
 class PozycjaFakturyAdmin(admin.ModelAdmin):
     list_display = ('nazwa', 'faktura', 'podatek',)
 
-admin.site.register(Klient, KlientAdmin)
+
 admin.site.register(Faktura, FakturaAdmin)
 admin.site.register(Sprzedawca, SprzedawcaAdmin)
 admin.site.register(PozycjaFaktury, PozycjaFakturyAdmin)

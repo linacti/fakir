@@ -5,7 +5,7 @@ class Klient(models.Model):
     Imie = models.CharField(max_length=100)
     Nazwisko = models.CharField(max_length=100)
     nr_pesel = models.TextField(max_length=11)
-    Adres = models.CharField(max_lenght=150)
+    Adres = models.CharField(max_length=150)
     kod_pocztowy = models.TextField(max_length=6)
     miasto = models.CharField(max_length=50)
     data_urodzenia = models.DateField()
@@ -18,7 +18,7 @@ class Sprzedawca(models.Model):
     
     Sprzedawca_nazwa = models.CharField(max_length=100)
     
-    Sprzedawca_adres = models.CharField(max_lenght=100)
+    Sprzedawca_adres = models.CharField(max_length=100)
     
     Sprzedawca_podatek = models.CharField(max_length=20)
     
@@ -45,13 +45,13 @@ class Faktura(models.Model):
 
     numer = models.CharField(max_length=200, null=True, blank=True,)
 
-    nabywca = models.ForeignKey(Firma, on_delete=models.SET_NULL, null=True, blank=True, related_name="nabywcy_set")
+    nabywca = models.ForeignKey(Sprzedawca, on_delete=models.SET_NULL, null=True, blank=True, related_name="nabywcy_set")
     nabywca_taxid = models.CharField(max_length=20, null=True, blank=True)
     nabywca_adres = models.TextField(null=True, blank=True)
 
 
-    sprzedawca = models.ForeignKey(Firma, on_delete=models.SET_NULL, null=True, blank=True, related_name="sprzedawcy_set")
-     sprzedawca_taxid = models.CharField(max_length=20, null=True, blank=True)
+    sprzedawca = models.ForeignKey(Sprzedawca, on_delete=models.SET_NULL, null=True, blank=True, related_name="sprzedawcy_set")
+    sprzedawca_taxid = models.TextField(null=True, blank=True)
     sprzedawca_adres = models.TextField(null=True, blank=True)
     
     data_sprzedazy = models.DateField('Data sprzedaży')
@@ -60,9 +60,7 @@ class Faktura(models.Model):
     is_kosztowa = models.BooleanField(default=False)
   
   
-      def __str__(self):
-      	return self.numer
-                
+  
         
 class JednostkaMiary(models.Model):
     nazwa = models.CharField(max_length=15)
@@ -77,7 +75,7 @@ class PozycjaFaktury(models.Model):
     faktura = models.ForeignKey(Faktura, on_delete=models.CASCADE)
     nazwa = models.CharField(max_length=100)
     jednostka_miary = models.ForeignKey(JednostkaMiary, on_delete=models.SET_NULL, null=True, blank=True)
-    ilosc = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('1.0'))
+    
     cena = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     wartosc_netto = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     wartosc_all = models.DecimalField(max_digits=10, decimal_places=2, default=0)

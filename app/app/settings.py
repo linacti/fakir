@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'fakir.1kb.pl']
 # Application definition
 
 INSTALLED_APPS = [
+    'fakir.apps.FakirConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
