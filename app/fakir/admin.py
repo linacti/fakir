@@ -1,12 +1,16 @@
 from django.contrib import admin
 from .models import Klient, Sprzedawca, Faktura, PozycjaFaktury, 
 
+class KlientAdmin(admin.ModelAdmin):
+list_display = ('Imie', 'Nazwisko', 'nr_pesel', 'Adres', 'kod_pocztowy', 'miasto', 'data_urodzenia', 'nr_telefonu' )
+list_filter = ['data_urodzenia']
+
 class PozycjeInline(admin.TabularInline):
     model = PozycjaFaktury
     extra = 3
 
 class FakturaAdmin(admin.ModelAdmin):
-    change_form_template = "fakir/faktura_change_form.html"
+   
     
     fieldsets = [
         (None, {'fields': ['numeracja']}),
@@ -34,6 +38,7 @@ class SprzedawcaAdmin(admin.ModelAdmin):
 class PozycjaFakturyAdmin(admin.ModelAdmin):
     list_display = ('nazwa', 'faktura', 'podatek',)
 
+admin.site.register(Klient, KlientAdmin)
 admin.site.register(Faktura, FakturaAdmin)
 admin.site.register(Sprzedawca, SprzedawcaAdmin)
 admin.site.register(PozycjaFaktury, PozycjaFakturyAdmin)
