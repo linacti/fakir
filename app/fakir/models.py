@@ -47,7 +47,7 @@ class Faktura(models.Model):
 
     numer = models.CharField(max_length=200, null=True, blank=True,)
 
-    nabywca = models.ForeignKey(Sprzedawca, on_delete=models.SET_NULL, null=True, blank=True, related_name="nabywcy_set")
+    nabywca = models.ForeignKey(Klient, on_delete=models.SET_NULL, null=True, blank=True, related_name="nabywcy_set")
     nabywca_taxid = models.CharField(max_length=20, null=True, blank=True)
     nabywca_adres = models.TextField(null=True, blank=True)
 

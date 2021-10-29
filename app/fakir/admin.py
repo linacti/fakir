@@ -3,6 +3,7 @@ from fakir.models import Klient, Sprzedawca, Faktura, PozycjaFaktury
 
 class KlientAdmin(admin.ModelAdmin):
 	list_display = ('Imie', 'Nazwisko', 'nr_pesel')
+	search_fields = ('Imie', 'Nazwisko')
 
 
 
