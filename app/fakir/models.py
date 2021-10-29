@@ -11,8 +11,7 @@ class Klient(models.Model):
     data_urodzenia = models.DateField()
     nr_telefonu = models.TextField(max_length=9)
     
-    def __str__(self):
-        return self.nazwa
+    
 
 class Sprzedawca(models.Model):
     
